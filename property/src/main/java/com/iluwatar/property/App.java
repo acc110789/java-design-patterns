@@ -46,21 +46,21 @@ public class App {
    */
   public static void main(String[] args) {
     /* set up */
-    Prototype charProto = new Character();
+    Prototype charProto = new Character();//所有职业的原型
     charProto.set(Stats.STRENGTH, 10);
     charProto.set(Stats.AGILITY, 10);
     charProto.set(Stats.ARMOR, 10);
     charProto.set(Stats.ATTACK_POWER, 10);
 
-    Character mageProto = new Character(Type.MAGE, charProto);
+    Character mageProto = new Character(Type.MAGE, charProto);//法师的原型
     mageProto.set(Stats.INTELLECT, 15);
     mageProto.set(Stats.SPIRIT, 10);
 
-    Character warProto = new Character(Type.WARRIOR, charProto);
+    Character warProto = new Character(Type.WARRIOR, charProto);//战士的原型
     warProto.set(Stats.RAGE, 15);
     warProto.set(Stats.ARMOR, 15); // boost default armor for warrior
 
-    Character rogueProto = new Character(Type.ROGUE, charProto);
+    Character rogueProto = new Character(Type.ROGUE, charProto);//盗贼的原型
     rogueProto.set(Stats.ENERGY, 15);
     rogueProto.set(Stats.AGILITY, 15); // boost default agility for rogue
 
