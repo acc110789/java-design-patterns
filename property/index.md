@@ -9,6 +9,8 @@ tags:
  - Difficulty-Beginner
 ---
 
+#已看
+
 ## Intent
 Create hierarchy of objects and new objects using already existing
 objects as parents.
@@ -23,3 +25,4 @@ Use the Property pattern when
 ## Real world examples
 
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain) prototype inheritance
+
