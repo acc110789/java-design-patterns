@@ -1,17 +1,17 @@
 /**
  * The MIT License
  * Copyright (c) 2014 Ilkka Seppälä
- *
+ * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * <p>
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,9 +22,9 @@
  */
 package com.iluwatar.repository;
 
-import java.util.List;
-
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.List;
 
 /**
  * Repository pattern mediates between the domain and data mapping layers using a collection-like
@@ -43,64 +43,64 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class App {
 
-  /**
-   * Program entry point
-   * 
-   * @param args
-   *          command line args
-   */
-  public static void main(String[] args) {
+    /**
+     * Program entry point
+     *
+     * @param args
+     *          command line args
+     */
+    public static void main(String[] args) {
 
-    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-        "applicationContext.xml");
-    PersonRepository repository = context.getBean(PersonRepository.class);
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+                "applicationContext.xml");
+        PersonRepository repository = context.getBean(PersonRepository.class);
 
-    Person peter = new Person("Peter", "Sagan", 17);
-    Person nasta = new Person("Nasta", "Kuzminova", 25);
-    Person john = new Person("John", "lawrence", 35);
-    Person terry = new Person("Terry", "Law", 36);
+        Person peter = new Person("Peter", "Sagan", 17);
+        Person nasta = new Person("Nasta", "Kuzminova", 25);
+        Person john = new Person("John", "lawrence", 35);
+        Person terry = new Person("Terry", "Law", 36);
 
-    // Add new Person records
-    repository.save(peter);
-    repository.save(nasta);
-    repository.save(john);
-    repository.save(terry);
+        // Add new Person records
+        repository.save(peter);
+        repository.save(nasta);
+        repository.save(john);
+        repository.save(terry);
 
-    // Count Person records
-    System.out.println("Count Person records: " + repository.count());
+        // Count Person records
+        System.out.println("Count Person records: " + repository.count());
 
-    // Print all records
-    List<Person> persons = (List<Person>) repository.findAll();
-    for (Person person : persons) {
-      System.out.println(person);
+        // Print all records
+        List<Person> persons = (List<Person>) repository.findAll();
+        for (Person person : persons) {
+            System.out.println(person);
+        }
+
+        // Update Person
+        nasta.setName("Barbora");
+        nasta.setSurname("Spotakova");
+        repository.save(nasta);
+
+        System.out.println("Find by id 2: " + repository.findOne(2L));
+
+        // Remove record from Person
+        repository.delete(2L);
+
+        // count records
+        System.out.println("Count Person records: " + repository.count());
+
+        // find by name
+        Person p = repository.findOne(new PersonSpecifications.NameEqualSpec("John"));
+        System.out.println("Find by John is " + p);
+
+        // find by age
+        persons = repository.findAll(new PersonSpecifications.AgeBetweenSpec(20, 40));
+
+        System.out.println("Find Person with age between 20,40: ");
+        for (Person person : persons) {
+            System.out.println(person);
+        }
+
+        context.close();
+
     }
-
-    // Update Person
-    nasta.setName("Barbora");
-    nasta.setSurname("Spotakova");
-    repository.save(nasta);
-
-    System.out.println("Find by id 2: " + repository.findOne(2L));
-
-    // Remove record from Person
-    repository.delete(2L);
-
-    // count records
-    System.out.println("Count Person records: " + repository.count());
-
-    // find by name
-    Person p = repository.findOne(new PersonSpecifications.NameEqualSpec("John"));
-    System.out.println("Find by John is " + p);
-
-    // find by age
-    persons = repository.findAll(new PersonSpecifications.AgeBetweenSpec(20, 40));
-
-    System.out.println("Find Person with age between 20,40: ");
-    for (Person person : persons) {
-      System.out.println(person);
-    }
-
-    context.close();
-
-  }
 }
