@@ -1,17 +1,17 @@
 /**
  * The MIT License
  * Copyright (c) 2014 Ilkka Seppälä
- *
+ * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * <p>
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -25,7 +25,6 @@ package com.iluwatar.builder;
 import com.iluwatar.builder.Hero.HeroBuilder;
 
 /**
- * 
  * The intention of the Builder pattern is to find a solution to the telescoping constructor
  * anti-pattern. The telescoping constructor anti-pattern occurs when the increase of object
  * constructor parameter combination leads to an exponential list of constructors. Instead of using
@@ -46,32 +45,28 @@ import com.iluwatar.builder.Hero.HeroBuilder;
  * additional configuration for the {@link Hero} object can be done using the fluent
  * {@link HeroBuilder} interface. When configuration is ready the build method is called to receive
  * the final {@link Hero} object.
- * 
  */
 public class App {
 
-  /**
-   * Program entry point
-   * 
-   * @param args command line args
-   */
-  public static void main(String[] args) {
+    /**
+     * Program entry point
+     *
+     * @param args command line args
+     */
+    public static void main(String[] args) {
 
-    Hero mage =
-        new HeroBuilder(Profession.MAGE, "Riobard").withHairColor(HairColor.BLACK)
-            .withWeapon(Weapon.DAGGER).build();
-    System.out.println(mage);
+        Hero mage = new HeroBuilder(Profession.MAGE, "Riobard").withHairColor(HairColor.BLACK)
+                .withWeapon(Weapon.DAGGER).build();
+        System.out.println(mage);
 
-    Hero warrior =
-        new HeroBuilder(Profession.WARRIOR, "Amberjill").withHairColor(HairColor.BLOND)
-            .withHairType(HairType.LONG_CURLY).withArmor(Armor.CHAIN_MAIL).withWeapon(Weapon.SWORD)
-            .build();
-    System.out.println(warrior);
+        Hero warrior = new HeroBuilder(Profession.WARRIOR, "Amberjill").withHairColor(HairColor.BLOND)
+                .withHairType(HairType.LONG_CURLY).withArmor(Armor.CHAIN_MAIL).withWeapon(Weapon.SWORD)
+                .build();
+        System.out.println(warrior);
 
-    Hero thief =
-        new HeroBuilder(Profession.THIEF, "Desmond").withHairType(HairType.BALD)
-            .withWeapon(Weapon.BOW).build();
-    System.out.println(thief);
+        Hero thief = new HeroBuilder(Profession.THIEF, "Desmond").withHairType(HairType.BALD)
+                .withWeapon(Weapon.BOW).build();
+        System.out.println(thief);
 
-  }
+    }
 }
