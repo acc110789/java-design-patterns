@@ -10,6 +10,8 @@ tags:
  - Difficulty-Intermediate
 ---
 
+# 已看
+
 ## Intent
 Separate the construction of a complex object from its
 representation so that the same construction process can create different
