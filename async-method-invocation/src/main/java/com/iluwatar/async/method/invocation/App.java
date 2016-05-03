@@ -47,7 +47,6 @@ import java.util.concurrent.Callable;
  * @see AsyncResult
  * @see AsyncCallback
  * @see AsyncExecutor
- *
  * @see java.util.concurrent.FutureTask
  * @see java.util.concurrent.CompletableFuture
  * @see java.util.concurrent.ExecutorService/
@@ -88,10 +87,8 @@ public class App {
     /**
      * Creates a callable that lazily evaluates to given value with artificial delay.
      *
-     * @param value
-     *          value to evaluate
-     * @param delayMillis
-     *          artificial delay in milliseconds
+     * @param value       value to evaluate
+     * @param delayMillis artificial delay in milliseconds
      * @return new callable for lazy evaluation
      */
     private static <T> Callable<T> lazyval(T value, long delayMillis) {
@@ -105,8 +102,7 @@ public class App {
     /**
      * Creates a simple callback that logs the complete status of the async result.
      *
-     * @param name
-     *          callback name
+     * @param name callback name
      * @return new async callback
      */
     private static <T> AsyncCallback<T> callback(String name) {
