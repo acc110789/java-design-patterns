@@ -77,7 +77,7 @@ public class App {
         initializeData(cakeBakingService);
 
         // create view and render it
-        CakeViewImpl cakeView = new CakeViewImpl(cakeBakingService);
+        View cakeView = new CakeViewImpl(cakeBakingService);
         cakeView.render();
     }
 
@@ -95,18 +95,23 @@ public class App {
         cakeBakingService.saveNewTopping(new CakeToppingInfo("candies", 350));
         cakeBakingService.saveNewTopping(new CakeToppingInfo("cherry", 350));
 
-        CakeInfo cake1 =
-                new CakeInfo(new CakeToppingInfo("candies", 0), Arrays.asList(new CakeLayerInfo(
-                        "chocolate", 0), new CakeLayerInfo("banana", 0), new CakeLayerInfo("strawberry", 0)));
+        CakeInfo cake1 = new CakeInfo(new CakeToppingInfo("candies", 0), Arrays.asList(
+                new CakeLayerInfo("chocolate", 0),
+                new CakeLayerInfo("banana", 0),
+                new CakeLayerInfo("strawberry", 0)
+        ));
+
         try {
             cakeBakingService.bakeNewCake(cake1);
         } catch (CakeBakingException e) {
             e.printStackTrace();
         }
-        CakeInfo cake2 =
-                new CakeInfo(new CakeToppingInfo("cherry", 0), Arrays.asList(
-                        new CakeLayerInfo("vanilla", 0), new CakeLayerInfo("lemon", 0), new CakeLayerInfo(
-                                "strawberry", 0)));
+        CakeInfo cake2 = new CakeInfo(new CakeToppingInfo("cherry", 0), Arrays.asList(
+                new CakeLayerInfo("vanilla", 0),
+                new CakeLayerInfo("lemon", 0),
+                new CakeLayerInfo("strawberry", 0)
+        ));
+
         try {
             cakeBakingService.bakeNewCake(cake2);
         } catch (CakeBakingException e) {
